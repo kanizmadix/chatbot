@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "HYPERX Extension",
+  "version": "1.0",
+  "description": "SDG-4 Information Retrieval and Extraction for Quality Education",
+  "icons": {
+    "16": "icons/chatbot-icon-16.png",
+    "48": "icons/chatbot-icon-48.png",
+    "128": "icons/chatbot-icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';",
+    "sandbox": ["sandbox"],
+    "script-src": ["'self'", "'unsafe-eval'"],
+    "object-src": ["'self'"],
+    "worker-src": ["'self'", "'unsafe-eval'", "blob:"],
+    "style-src": ["'self'", "'unsafe-inline'"],
+    "img-src": ["'self'", "data:", "blob:"],
+    "font-src": ["'self'", "data:"],
+    "connect-src": ["'self'", "http://localhost:3000/"]
+  },
+  "web_accessible_resources": [
+    "images/*"
+  ],
+  "permissions": [
+    "storage",
+    "activeTab"
+  ]
+}
